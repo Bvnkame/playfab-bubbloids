@@ -5,7 +5,7 @@ function FunkoiResponseFormat(result)
 
 handlers.HelloWorld = function(args){ 
 	var result = {}; 
-	result.message = "hello world"; 
+	result.message = "Funkoi: hello world!"; 
 	return FunkoiResponseFormat(result);
 	//return JSON.stringify(result).replace(/"/g, '\\"');
 }
