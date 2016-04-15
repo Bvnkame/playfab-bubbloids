@@ -6,13 +6,13 @@ function FunkoiResponseFormat(result)
 handlers.HelloWorld = function(args){ 
 	var result = {}; 
 	result.message = "hello world"; 
-	return JSON.stringify(result).replace(/"/g, '\\"');
+	return FunkoiResponseFormat(result);
 }
 
 handlers.Hello = function(args){ 
 	var result = {}; 
 	result.message = "hello"; 
-	return JSON.stringify(result).replace(/"/g, '\\"');
+	return FunkoiResponseFormat(result);
 }
 
 handlers.GetTime = function(args){
@@ -21,17 +21,17 @@ handlers.GetTime = function(args){
 	
 	var result = {}; 
 	result.timeInSeconds = n;
-	return JSON.stringify(result).replace(/"/g, '\\"');
+	return FunkoiResponseFormat(result);
 }
 
 handlers.SendPushNotification = function(args)
 {
 	var request {
-		Recipient : 7A2290C930139A65,
+		Recipient : "7A2290C930139A65",
 		Message : "Hello, nice to meet you",
 	};
 
-	server.SendPushNotification(request);
+	//server.SendPushNotification(request);
 
 	var result = {}; 
 	result.message = "sent";
