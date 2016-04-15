@@ -26,7 +26,7 @@ handlers.HelloWorld = function(args){
 
 handlers.SendNotification = function(args)
 {
-	var request {
+	var request = {
 		Recipient : "7A2290C930139A65",
 		Message : "Hello, nice to meet you",
 	};
