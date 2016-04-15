@@ -1,11 +1,11 @@
 handlers.HelloWorld = function(args){ 
 	var result = {}; 
 	result.message = "hello world"; 
-	return String(result);
+	return JSON.stringify(result);
 }
 
 handlers.Hello = function(args){ 
 	var result = {}; 
 	result.message = "hello"; 
-	return String(result);
+	return JSON.stringify(result);
 }
