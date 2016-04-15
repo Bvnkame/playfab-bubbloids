@@ -47,7 +47,7 @@ handlers.GetData = function(args)
 		Keys : args.key,
 	};
 
-	var result = server.GetUserData(FunkoiResponseFormat(request));
+	var result = server.GetUserData(request);
 
 	//var result = {}; 
 	//result.message = "sent";
