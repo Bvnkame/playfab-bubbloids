@@ -31,7 +31,7 @@ handlers.SendNotification = function(args)
 		Message : "Hello, nice to meet you",
 	};
 
-	//server.SendPushNotification(request);
+	server.SendPushNotification(request);
 
 	var result = {}; 
 	result.message = "sent";
