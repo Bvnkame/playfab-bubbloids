@@ -44,7 +44,7 @@ handlers.GetData = function(args)
 {
 	var request = {
 		PlayFabId : currentPlayerId,
-		Keys : "key",
+		Keys : args.key,
 	};
 
 	var result = server.GetUserData(request);
