@@ -9,20 +9,14 @@ handlers.HelloWorld = function(args){
 	return FunkoiResponseFormat(result);
 }
 
-// handlers.Hello = function(args){ 
-// 	var result = {}; 
-// 	result.message = "hello"; 
-// 	return FunkoiResponseFormat(result);
-// }
-
-// handlers.GetTime = function(args){
-// 	var d = new Date();
-// 	var n = d.getTime();
+handlers.GetTime = function(args){
+	var d = new Date();
+	var n = d.getTime();
 	
-// 	var result = {}; 
-// 	result.timeInSeconds = n;
-// 	return FunkoiResponseFormat(result);
-// }
+	var result = {}; 
+	result.timeInSeconds = n;
+	return FunkoiResponseFormat(result);
+}
 
 handlers.SendNotification = function(args)
 {
@@ -35,6 +29,17 @@ handlers.SendNotification = function(args)
 
 	var result = {}; 
 	result.message = "sent";
+
+	return FunkoiResponseFormat(result);
+}
+
+handlers.GetUserAccountInfo = function(args)
+{
+	var request = {
+		PlayFabId : currentPlayerId,
+	};
+
+	var result = server.GetUserAccountInfo(request);
 
 	return FunkoiResponseFormat(result);
 }
