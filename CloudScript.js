@@ -38,3 +38,19 @@ handlers.SendNotification = function(args)
 
 	return FunkoiResponseFormat(result);
 }
+
+
+handlers.GetData = function(args)
+{
+	var request = {
+		PlayFabId : currentPlayerId,
+		Keys : "key",
+	};
+
+	var result = server.GetUserData(request);
+
+	//var result = {}; 
+	//result.message = "sent";
+
+	return FunkoiResponseFormat(result);
+}
