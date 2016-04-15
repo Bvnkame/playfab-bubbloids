@@ -1,14 +1,23 @@
+//===========================================
+//Ultilities
+//===========================================
 function FunkoiResponseFormat(result)
 {
 	return JSON.stringify(result).replace(/"/g, '\\"');
 }
 
+
+//===========================================
+//Functions
+//===========================================
+//Hello world
 handlers.HelloWorld = function(args){ 
 	var result = {}; 
 	result.message = "Funkoi: hello world!"; 
 	return FunkoiResponseFormat(result);
 }
 
+//Get server time
 handlers.GetTime = function(args){
 	var d = new Date();
 	var n = d.getTime();
@@ -18,21 +27,26 @@ handlers.GetTime = function(args){
 	return FunkoiResponseFormat(result);
 }
 
+//Send notification
 handlers.SendNotification = function(args)
 {
 	var request = {
-		Recipient : "7A2290C930139A65",
-		Message : "Hello, nice to meet you",
+		Recipient : currentPlayerId,
+		Message : "Bubbloids says Hello to you!",
 	};
 
-	server.SendPushNotification(request);
+	//var request = {};
+	//request.Recipient = args.Id == undefined || args.Id == null ? currentPlayerId : args.Id;
+	//request.Message = args.Msg == undefined || args.Msg == null ? "" : args.Msg;
+	//request.Subject = args.Subject == undefined || args.Subject == null ? "" : args.Subject;
+	//server.SendPushNotification(request);
 
-	var result = {}; 
-	result.message = "sent";
+	var result = server.SendPushNotification(request); 
 
 	return FunkoiResponseFormat(result);
 }
 
+//Get user account info
 handlers.GetUserAccountInfo = function(args)
 {
 	var request = {
@@ -44,7 +58,7 @@ handlers.GetUserAccountInfo = function(args)
 	return FunkoiResponseFormat(result);
 }
 
-
+//Get user data
 handlers.GetData = function(args)
 {
 	var request = {
