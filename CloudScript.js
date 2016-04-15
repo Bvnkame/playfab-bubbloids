@@ -1,28 +1,28 @@
-function FunkoiResponseFormat(result)
-{
-	return JSON.stringify(result).replace(/"/g, '\\"');
-}
+// function FunkoiResponseFormat(result)
+// {
+// 	return JSON.stringify(result).replace(/"/g, '\\"');
+// }
 
-handlers.HelloWorld = function(args){ 
-	var result = {}; 
-	result.message = "hello world"; 
-	return FunkoiResponseFormat(result);
-}
+// handlers.HelloWorld = function(args){ 
+// 	var result = {}; 
+// 	result.message = "hello world"; 
+// 	return FunkoiResponseFormat(result);
+// }
 
-handlers.Hello = function(args){ 
-	var result = {}; 
-	result.message = "hello"; 
-	return FunkoiResponseFormat(result);
-}
+// handlers.Hello = function(args){ 
+// 	var result = {}; 
+// 	result.message = "hello"; 
+// 	return FunkoiResponseFormat(result);
+// }
 
-handlers.GetTime = function(args){
-	var d = new Date();
-	var n = d.getTime();
+// handlers.GetTime = function(args){
+// 	var d = new Date();
+// 	var n = d.getTime();
 	
-	var result = {}; 
-	result.timeInSeconds = n;
-	return FunkoiResponseFormat(result);
-}
+// 	var result = {}; 
+// 	result.timeInSeconds = n;
+// 	return FunkoiResponseFormat(result);
+// }
 
 handlers.SendPushNotification = function(args)
 {
@@ -36,5 +36,6 @@ handlers.SendPushNotification = function(args)
 	var result = {}; 
 	result.message = "sent";
 
-	return FunkoiResponseFormat(result);
+	//return FunkoiResponseFormat(result);
+	return JSON.stringify(result).replace(/"/g, '\\"');
 }
