@@ -1,13 +1,13 @@
-// function FunkoiResponseFormat(result)
-// {
-// 	return JSON.stringify(result).replace(/"/g, '\\"');
-// }
+function FunkoiResponseFormat(result)
+{
+	return JSON.stringify(result).replace(/"/g, '\\"');
+}
 
 handlers.HelloWorld = function(args){ 
 	var result = {}; 
 	result.message = "hello world"; 
-	//return FunkoiResponseFormat(result);
-	return JSON.stringify(result).replace(/"/g, '\\"');
+	return FunkoiResponseFormat(result);
+	//return JSON.stringify(result).replace(/"/g, '\\"');
 }
 
 // handlers.Hello = function(args){ 
