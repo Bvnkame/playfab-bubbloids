@@ -61,7 +61,7 @@ handlers.CheckEvents = function(args)
 	if(isAvailable)
 	{
 		//Return the json value of key data
-		return FunkoiResponseFormat(result["Data"]);
+		return FunkoiResponseFormat(result["Data"]["MYSTERY_BOX"]);
 	}
 	else
 	{
