@@ -51,9 +51,9 @@ handlers.CheckEvents = function(args)
 	var durationTime = Number(eventDuration) * 3600;
 	var currentTime = new Date();
 
-	log.debug("startTime:" + startTime);
+	log.debug("startTime:" + startTime + ", timestamp: " + startTime.getTime());
 	log.debug("durationTime:" + durationTime);
-	log.debug("currentTime:" + currentTime);
+	log.debug("currentTime:" + currentTime + ", timestamp: " + currentTime.getTime());
 
 	var isAvailable = (currentTime.getTime() > startTime.getTime()) &&  (currentTime.getTime() <= startTime.getTime() + durationTime);
 	log.debug("Available: " + isAvailable);
