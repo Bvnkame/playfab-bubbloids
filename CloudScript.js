@@ -39,7 +39,7 @@ handlers.CheckEvents = function(args)
 	//Request get title datas from server
 	var result = server.GetTitleData(request);
 
-	log.debug(result["Data"]);
+	log.debug(result["Data"]["EVENT_MYSTERY_BOX_DURATION"]);
 
 	//Calculate the remain time
 	var eventStart 		= result["EVENT_MYSTERY_BOX_START"];
