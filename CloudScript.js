@@ -64,6 +64,7 @@ handlers.CheckEvents = function(args)
 		//Return the json value of key data
 		
 		var respond = {
+			IsAvailable : true,
 			MysteryBox : result["Data"]["MYSTERY_BOX"],
 			RemainTime : remainTime,	
 		};
@@ -71,7 +72,12 @@ handlers.CheckEvents = function(args)
 	}
 	else
 	{
-		return null;
+		var respond = {
+			IsAvailable : false,
+			MysteryBox : null,
+			RemainTime : null,	
+		};
+		return FunkoiResponseFormat(respond);
 	}
 }
 
