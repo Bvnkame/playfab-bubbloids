@@ -61,7 +61,7 @@ handlers.CheckEvents = function(args)
 	if(isAvailable)
 	{
 		var remainTime = (startTime.getTime() + durationTime) - currentTime.getTime(); //Miliseconds
-		result.RemainTime = remainTime;
+		result["Data"].RemainTime = remainTime;
 		//Return the json value of key data
 		return FunkoiResponseFormat(result["Data"]["MYSTERY_BOX"]);
 	}
