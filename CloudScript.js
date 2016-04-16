@@ -55,10 +55,10 @@ handlers.CheckEvents = function(args)
 	log.debug("durationTime:" + durationTime);
 	log.debug("currentTime:" + currentTime);
 
-	var remainTime = currentTime.getTime() - (startTime.getTime() + durationTime);
-	log.debug("Remain time:" + remainTime);
+	var isAvailable = (currentTime.getTime() > (startTime.getTime()) &&  (currentTime.getTime() <= startTime.getTime() + durationTime);
+	log.debug("Available: " + isAvailable);
 
-	if(remainTime > 0)
+	if(isAvailable)
 	{
 		//Return the json value of key data
 		return FunkoiResponseFormat(result["Data"]);
