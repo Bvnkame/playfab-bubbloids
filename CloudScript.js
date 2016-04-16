@@ -48,7 +48,7 @@ handlers.CheckEvents = function(args)
 	var eventDuration 	= result["Data"]["EVENT_MYSTERY_BOX_DURATION"];
 
 	var startTime = new Date(eventStart);
-	var durationTime = Number(eventDuration) * 3600;
+	var durationTime = Number(eventDuration) * 3600000; //in miliseconds
 	var currentTime = new Date();
 
 	log.debug("startTime:" + startTime + ", timestamp: " + startTime.getTime());
