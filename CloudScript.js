@@ -1,9 +1,24 @@
+var Environments = {
+	LEVELOPMENT : 0,
+	PUBLISH : 1
+};
+
+var g_environment = Environments.PUBLISH;
+
 //===========================================
 //Ultilities
 //===========================================
 function FunkoiResponseFormat(result)
 {
 	return JSON.stringify(result).replace(/"/g, '\"');
+}
+
+function DebugLog(message)
+{
+	if(g_environment == Environments.LEVELOPMENT)
+	{
+		log.debug(message);
+	}
 }
 
 //Get server time
@@ -39,9 +54,9 @@ handlers.CheckEvents = function(args)
 	//Request get title datas from server
 	var result = server.GetTitleData(request);
 
-	log.debug(result["Data"]["EVENT_MYSTERY_BOX_DURATION"]);
-	log.debug(result["Data"]["EVENT_MYSTERY_BOX_START"]);
-	log.debug(result["Data"]["MYSTERY_BOX"]);
+	DebugLog(result["Data"]["EVENT_MYSTERY_BOX_DURATION"]);
+	DebugLog(result["Data"]["EVENT_MYSTERY_BOX_START"]);
+	DebugLog(result["Data"]["MYSTERY_BOX"]);
 
 	//Calculate the remain time
 	var eventStart 		= result["Data"]["EVENT_MYSTERY_BOX_START"];
@@ -51,12 +66,12 @@ handlers.CheckEvents = function(args)
 	var durationTime = Number(eventDuration) * 3600000; //in miliseconds
 	var currentTime = new Date();
 
-	log.debug("startTime:" + startTime + ", timestamp: " + startTime.getTime());
-	log.debug("durationTime:" + durationTime);
-	log.debug("currentTime:" + currentTime + ", timestamp: " + currentTime.getTime());
+	DebugLog("startTime:" + startTime + ", timestamp: " + startTime.getTime());
+	DebugLog("durationTime:" + durationTime);
+	DebugLog("currentTime:" + currentTime + ", timestamp: " + currentTime.getTime());
 
 	var isAvailable = (currentTime.getTime() > startTime.getTime()) &&  (currentTime.getTime() <= startTime.getTime() + durationTime);
-	log.debug("Available: " + isAvailable);
+	DebugLog("Available: " + isAvailable);
 
 	if(isAvailable)
 	{
