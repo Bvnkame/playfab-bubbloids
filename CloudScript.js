@@ -40,6 +40,8 @@ handlers.CheckEvents = function(args)
 	var result = server.GetTitleData(request);
 
 	log.debug(result["Data"]["EVENT_MYSTERY_BOX_DURATION"]);
+	log.debug(result["Data"]["EVENT_MYSTERY_BOX_START"]);
+	log.debug(result["Data"]["MYSTERY_BOX"]);
 
 	//Calculate the remain time
 	var eventStart 		= result["EVENT_MYSTERY_BOX_START"];
