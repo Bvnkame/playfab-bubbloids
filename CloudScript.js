@@ -3,9 +3,18 @@
 //===========================================
 function FunkoiResponseFormat(result)
 {
-	return JSON.stringify(result).replace(/"/g, '\\"');
+	return JSON.stringify(result).replace(/"/g, '\"');
 }
 
+//Get server time
+handlers.GetTime = function(args){
+	var d = new Date();
+	var n = d.getTime();
+	
+	var result = {}; 
+	result.timeInSeconds = n;
+	return FunkoiResponseFormat(result);
+}
 
 //===========================================
 //Functions
@@ -17,14 +26,45 @@ handlers.HelloWorld = function(args){
 	return FunkoiResponseFormat(result);
 }
 
-//Get server time
-handlers.GetTime = function(args){
-	var d = new Date();
-	var n = d.getTime();
-	
-	var result = {}; 
-	result.timeInSeconds = n;
-	return FunkoiResponseFormat(result);
+handlers.CheckEvents = function(args)
+{
+	var request = {
+		Keys : [
+			"EVENT_MYSTERY_BOX_DURATION",
+			"EVENT_MYSTERY_BOX_START",
+			"MYSTERY_BOX",
+		],
+	}
+
+	//Request get title datas from server
+	var result = server.GetTitleData(request);
+
+	log.debug("Result:" + result["Data"]);
+
+	//Calculate the remain time
+	var eventStart 		= result["EVENT_MYSTERY_BOX_START"];
+	var eventDuration 	= result["EVENT_MYSTERY_BOX_DURATION"];
+
+	var startTime = new Date(eventStart);
+	var durationTime = Number(eventDuration) * 3600;
+	var currentTime = new Date();
+
+	log.debug("startTime:" + startTime);
+	log.debug("durationTime:" + durationTime);
+	log.debug("currentTime:" + currentTime);
+
+	var remainTime = currentTime.getTime() - (startTime.getTime() + durationTime);
+	log.debug("Remain time:" + remainTime);
+
+	if(remainTime > 0)
+	{
+		//Return the json value of key data
+		return FunkoiResponseFormat(result["Data"]);
+	}
+	else
+	{
+		return null;
+	}
 }
 
 //Send notification
