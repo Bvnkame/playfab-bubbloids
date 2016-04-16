@@ -55,7 +55,7 @@ handlers.CheckEvents = function(args)
 	log.debug("durationTime:" + durationTime);
 	log.debug("currentTime:" + currentTime);
 
-	var isAvailable = (currentTime.getTime() > (startTime.getTime()) &&  (currentTime.getTime() <= startTime.getTime() + durationTime);
+	var isAvailable = (currentTime.getTime() > startTime.getTime()) &&  (currentTime.getTime() <= startTime.getTime() + durationTime);
 	log.debug("Available: " + isAvailable);
 
 	if(isAvailable)
