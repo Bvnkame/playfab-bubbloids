@@ -44,8 +44,8 @@ handlers.CheckEvents = function(args)
 	log.debug(result["Data"]["MYSTERY_BOX"]);
 
 	//Calculate the remain time
-	var eventStart 		= result["EVENT_MYSTERY_BOX_START"];
-	var eventDuration 	= result["EVENT_MYSTERY_BOX_DURATION"];
+	var eventStart 		= result["Data"]["EVENT_MYSTERY_BOX_START"];
+	var eventDuration 	= result["Data"]["EVENT_MYSTERY_BOX_DURATION"];
 
 	var startTime = new Date(eventStart);
 	var durationTime = Number(eventDuration) * 3600;
